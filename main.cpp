@@ -12,22 +12,19 @@
 using namespace std;
 
 char *getPtrToFileContents(string filePath, int *sz) {
-  ifstream inFile;
-	size_t size = 0; // here
-
-	inFile.open(filePath.c_str(), ios::in|ios::binary|ios::ate );
-	char* oData = NULL;
-
-	inFile.seekg(0, ios::end); // set the pointer to the end
-	size = inFile.tellg() ; // get the length of the file
-	cout << "Size of file: " << size << "\n";
-	inFile.seekg(0, ios::beg); // set the pointer to the beginning
-
-	oData = new char[size + 1]; //  for the '\0'
-	inFile.read(oData, size);
-	oData[size] = '\0' ; // set '\0'
-	cout << "Data size: " << strlen(oData) << "\n";
-	sz[0] = (int) size;
+    ifstream inFile;
+    size_t size = 0; // here
+    inFile.open(filePath.c_str(), ios::in|ios::binary|ios::ate );
+    char* oData = NULL;
+    inFile.seekg(0, ios::end); // set the pointer to the end
+    size = inFile.tellg() ; // get the length of the file
+    cout << "Size of file: " << size << "\n";
+    inFile.seekg(0, ios::beg); // set the pointer to the beginning
+    oData = new char[size + 1]; //  for the '\0'
+    inFile.read(oData, size);
+    oData[size] = '\0' ; // set '\0'
+    cout << "Data size: " << strlen(oData) << "\n";
+    sz[0] = (int) size;
     return oData;
 }
 
